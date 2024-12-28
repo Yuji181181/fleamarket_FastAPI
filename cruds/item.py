@@ -63,3 +63,24 @@ def create(item_create):
     )
     items.append(new_item)
     return new_item
+
+
+# 商品を更新する関数
+def update(id: int, item_update):
+    for item in items:
+        if item.id == id:
+            item.name = item_update.get("name", item.name)
+            item.price = item_update.get("price", item.price)
+            item.description = item_update.get("description", item.description)
+            item.status = item_update.get("status", item.status)
+            return item
+    return None
+
+
+# 商品を削除する関数
+def delete(id: int):
+    for i in range(len(items)):
+        if items[i].id == id:
+            delele_item = items.pop(i)
+            return delele_item
+    return None

@@ -27,3 +27,15 @@ async def find_by_name(name: str):
 @app.post("/items")
 async def create(item_create=Body()):
     return item_cruds.create(item_create)
+
+
+# 商品を更新するAPI
+@app.put("/items/{id}")
+async def update(id: int, item_update=Body()):
+    return item_cruds.update(id, item_update)
+
+
+# 商品を削除するAPI
+@app.delete("/items/{id}")
+async def delete(id: int):
+    return item_cruds.delete(id)
