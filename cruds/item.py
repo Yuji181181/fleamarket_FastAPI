@@ -41,3 +41,12 @@ def find_by_id(id: int):
         if item.id == id:
             return item
     return None
+
+
+# 名前でアイテムを検索する関数
+def find_by_name(name: str):
+    filtered_items = []
+    for item in items:
+        if name in item.name:
+            filtered_items.append(item)
+    return filtered_items
