@@ -30,5 +30,14 @@ items = [
 ]
 
 
+# 全てのアイテムを取得する関数
 def find_all():
     return items
+
+
+# 特定のIDのアイテムを取得する関数
+def find_by_id(id: int):
+    for item in items:  # itemは変数名
+        if item.id == id:
+            return item
+    return None
