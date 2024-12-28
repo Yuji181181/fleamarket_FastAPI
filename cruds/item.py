@@ -28,3 +28,7 @@ items = [
     Item(2, "スマートフォン", 50000, None, ItemStatus.ON_SALE),
     Item(3, "Python本", 1000, "使用感あり", ItemStatus.SOLD_OUT),
 ]
+
+
+def find_all():
+    return items
