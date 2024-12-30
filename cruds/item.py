@@ -38,7 +38,7 @@ def find_all():
 
 # 特定のIDのアイテムを取得する関数
 def find_by_id(id: int):
-    for item in items:  # itemは変数名
+    for item in items:  # itemはItemクラスのインスタンス、itemsはItemクラスのリスト
         if item.id == id:
             return item
     return None
