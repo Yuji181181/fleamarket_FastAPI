@@ -23,6 +23,7 @@ class Item:
         self.status = status
 
 
+# 全商品のリスト
 items = [
     Item(1, "PC", 100000, "美品です", ItemStatus.ON_SALE),
     Item(2, "スマートフォン", 50000, None, ItemStatus.ON_SALE),
