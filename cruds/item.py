@@ -81,6 +81,6 @@ def update(id: int, item_update):
 def delete(id: int):
     for i in range(len(items)):
         if items[i].id == id:
-            delele_item = items.pop(i)
-            return delele_item
+            delete_item = items.pop(i)
+            return delete_item
     return None
