@@ -1,10 +1,5 @@
 from typing import Optional
-from enum import Enum
-
-
-class ItemStatus(Enum):
-    ON_SALE = "ON_SALE"
-    SOLD_OUT = "SOLD_OUT"
+from schemas import ItemCreate, ItemStatus, ItemUpdate
 
 
 class Item:
@@ -54,12 +49,12 @@ def find_by_name(name: str):
 
 
 # 商品を追加する関数
-def create(item_create):
+def create(item_create: ItemCreate):
     new_item = Item(
         len(items) + 1,
-        item_create.get("name"),
-        item_create.get("price"),
-        item_create.get("description"),
+        item_create.name,
+        item_create.price,
+        item_create.description,
         ItemStatus.ON_SALE,
     )
     items.append(new_item)
@@ -67,13 +62,21 @@ def create(item_create):
 
 
 # 商品を更新する関数
-def update(id: int, item_update):
+def update(id: int, item_update: ItemUpdate):
     for item in items:
         if item.id == id:
-            item.name = item_update.get("name", item.name)
-            item.price = item_update.get("price", item.price)
-            item.description = item_update.get("description", item.description)
-            item.status = item_update.get("status", item.status)
+            item.name = item_update.name if item_update.name is not None else item.name
+            item.price = (
+                item_update.price if item_update.price is not None else item.price
+            )
+            item.description = (
+                item_update.description
+                if item_update.description is not None
+                else item.description
+            )
+            item.status = (
+                item_update.status if item_update.status is not None else item.status
+            )
             return item
     return None
 

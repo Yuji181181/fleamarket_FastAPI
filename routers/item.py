@@ -1,5 +1,6 @@
-from fastapi import APIRouter, Body
+from fastapi import APIRouter
 from cruds import item as item_cruds
+from schemas import ItemCreate, ItemUpdate
 
 router = APIRouter(prefix="/items", tags=["Item"])
 ## prefix:ルーターの共通のURLを設定する   ## tags:ドキュメントに表示される題名を設定する
@@ -25,13 +26,13 @@ async def find_by_name(name: str):
 
 # 商品を追加するAPI
 @router.post("")
-async def create(item_create=Body()):
+async def create(item_create: ItemCreate):
     return item_cruds.create(item_create)
 
 
 # 商品を更新するAPI
 @router.put("/{id}")
-async def update(id: int, item_update=Body()):
+async def update(id: int, item_update: ItemUpdate):
     return item_cruds.update(id, item_update)
 
 
